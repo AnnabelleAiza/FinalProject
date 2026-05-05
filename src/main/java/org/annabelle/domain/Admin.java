@@ -1,4 +1,5 @@
 package org.annabelle.domain;
 
-public class Admin {
+public class Admin extends User implements Reportable {
+
 }

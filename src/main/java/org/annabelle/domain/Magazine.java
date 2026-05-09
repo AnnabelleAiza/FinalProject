@@ -14,4 +14,20 @@ public class Magazine extends Item {
         this.issueNumber = issueNumber;
         this.publisher = publisher;
     }
+
+    public Magazine(String id, String title, String issueNumber, String publisher, ItemStatus status) {
+        super(id, title, status);
+        this.issueNumber = issueNumber;
+        this.publisher = publisher;
+    }
+
+    @Override
+    public String getDetails() {
+        return "";
+    }
+
+    @Override
+    public String toCSV() {
+        return "";
+    }
 }

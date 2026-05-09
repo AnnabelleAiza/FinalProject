@@ -21,15 +21,19 @@ public abstract class User {
         this.borrowedItems = new ArrayList<>();
     }
 
-    public static void borrowItem(Item item) {
+    public void borrowItem(Item item) {
 
     }
 
-    public static void returnItem(Item item) {
+    public void returnItem(Item item) {
 
     }
 
     public abstract boolean canBorrow(Item item) {
+
+    }
+
+    public String toCSV() {
 
     }
 }

@@ -9,10 +9,6 @@ public class Admin extends User implements Reportable {
         super(id, name);
     }
 
-    public static void generateReport(Library library) {
-
-    }
-
     public void backupUsers(Library library) {
         File file = new File(Constants.USER_CSV_PATH);
         try (FileWriter fw = new FileWriter(file)) {

@@ -29,9 +29,7 @@ public abstract class User {
 
     }
 
-    public abstract boolean canBorrow(Item item) {
-
-    }
+    public abstract boolean canBorrow(Item item);
 
     public String toCSV() {
 

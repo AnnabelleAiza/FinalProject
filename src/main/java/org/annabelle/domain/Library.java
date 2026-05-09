@@ -1,7 +1,10 @@
 package org.annabelle.domain;
 
-import java.util.*;
+import lombok.Getter;
 
+import java.util.*;
+import java.util.stream.Collectors;
+@Getter
 public class Library {
     public Map<String, Item> items;
     public Map<String, User> users;
@@ -54,11 +57,24 @@ public class Library {
         return new ArrayList<>(results);
     }
 
-    public Item searchRecursive(){
+    public Item searchRecursive(List<Item> itemList, String title, int index){
+        if(index >= itemList.size()) {
+            return null;
+        }
 
+        Item current = itemList.get(index);
+
+        if (current.getTitle().equalsIgnoreCase(title)) {
+            return current;
+        }
+
+        return searchRecursive(itemList, title, index + 1);
     }
 
-    public List<Item> searchStream() {
-
+    public List<Item> searchStream(String title) {
+        return items.values().stream()
+                .filter(i -> i.getTitle().equalsIgnoreCase(title))
+                .distinct()
+                .collect(Collectors.toList());
     }
 }

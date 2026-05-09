@@ -21,12 +21,20 @@ public abstract class User {
         this.borrowedItems = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param item
+     */
     public void borrowItem(Item item) {
         if (!borrowedItems.contains(item)) {
             borrowedItems.add(item);
         }
     }
 
+    /**
+     *
+     * @param item
+     */
     public void returnItem(Item item) {
         if (borrowedItems.contains(item)) {
             borrowedItems.remove(item);

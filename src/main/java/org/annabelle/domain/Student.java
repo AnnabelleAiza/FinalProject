@@ -7,7 +7,7 @@ public class Student extends User {
 
     @Override
     public boolean canBorrow(Item item) {
-        if (!borrowedItems.instanceOf(Book)) {
+        if (!(borrowedItems instanceof Book)) {
             return false;
         } else if (borrowedItems.size() > = 5) {
             return false;

@@ -22,23 +22,22 @@ public class Library {
         items.putIfAbsent(item.getId(), item);
     }
 
-    public void borrowItem(String userId, String itemId) {
-
+    public void borrowItem(Item item, User user) {
+        item.setStatus(Item.ItemStatus.BORROWED);
+        user.borrowItem(item);
     }
 
-    public void returnItem(String userId, String itemId) {
-
+    public void returnItem(Item item, User user) {
+        item.setStatus(Item.ItemStatus.IN_STORE);
+        user.returnItem(item);
     }
 
     public List<Item> searchByTitle(String title) {
         Set<Item> results = new HashSet<>();
 
         for(Item item : items.values()) {
-            if(item instanceof Book) {
-                Book book =
-                if (book.getAuthor().equalsIgnoreCase(author)) {
-                    results.add(book);
-                }
+            if(item.getTitle().equalsIgnoreCase(title)) {
+                results.add(item);
             }
         }
 
@@ -49,8 +48,10 @@ public class Library {
         Set<Item> results = new HashSet<>();
 
         for(Item item : items.values()) {
-            if(item.getTitle().equalsIgnoreCase(author)) {
-                results.add(item);
+            if(item instanceof Book) {
+                if(item.getTitle().equalsIgnoreCase(author)) {
+                    results.add(item);
+                }
             }
         }
 

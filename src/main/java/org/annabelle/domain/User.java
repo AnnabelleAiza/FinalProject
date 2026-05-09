@@ -22,11 +22,15 @@ public abstract class User {
     }
 
     public void borrowItem(Item item) {
-
+        if (!borrowedItems.contains(item)) {
+            borrowedItems.add(item);
+        }
     }
 
     public void returnItem(Item item) {
-
+        if (borrowedItems.contains(item)) {
+            borrowedItems.remove(item);
+        }
     }
 
     public abstract boolean canBorrow(Item item);

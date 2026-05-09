@@ -3,6 +3,10 @@ package org.annabelle.domain;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Admin extends User implements Reportable {
     public Admin(String id, String name) {
@@ -34,12 +38,19 @@ public class Admin extends User implements Reportable {
     }
 
     @Override
-    public boolean canBorrow(Item item) {
-        return false;
+    public Map<Item.ItemStatus, List<Item>> generateReport(Library library) {
+        Map<Item.ItemStatus, List<Item>> map = new TreeMap<>();
+
+        for(Item item : library.getItems().values()) {
+            map.putIfAbsent(item.getStatus(), new ArrayList<>());
+            map.get(item.getStatus()).add(item);
+        }
+
+        return map;
     }
 
     @Override
-    public String generateReport() {
-        return "";
+    public boolean canBorrow(Item item) {
+        return false;
     }
 }

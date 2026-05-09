@@ -1,9 +1,8 @@
 package org.annabelle.domain;
 
+import java.util.List;
+import java.util.Map;
+
 public interface Reportable {
-    /**
-     * Generates a full report of the system
-     * @return report as a String
-     */
-    String generateReport();
+    Map<Item.ItemStatus, List<Item>> generateReport(Library library);
 }

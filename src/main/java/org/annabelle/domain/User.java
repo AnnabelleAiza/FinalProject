@@ -22,8 +22,8 @@ public abstract class User {
     }
 
     /**
-     *
-     * @param item
+     * borrows items
+     * @param item the item the user wishes to borrow
      */
     public void borrowItem(Item item) {
         if (!borrowedItems.contains(item)) {
@@ -32,8 +32,8 @@ public abstract class User {
     }
 
     /**
-     *
-     * @param item
+     * returns items
+     * @param item the item the user wishes to return
      */
     public void returnItem(Item item) {
         if (borrowedItems.contains(item)) {
@@ -42,8 +42,4 @@ public abstract class User {
     }
 
     public abstract boolean canBorrow(Item item);
-
-    public String toCSV() {
-
-    }
 }

@@ -1,5 +1,8 @@
 package org.annabelle.domain;
 
+import lombok.Getter;
+
+@Getter
 public class Book extends Item {
     private String isbn;
     private String author;

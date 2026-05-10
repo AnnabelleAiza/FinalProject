@@ -22,13 +22,18 @@ public class Book extends Item {
         this.genre = genre;
     }
 
-    public static void validateISBN(){
+    public boolean validateISBN(){
+        if (isbn == null || isbn.length() != 13) {
+            return false;
+        }
 
-    }
+        for(int i = 0; i < 13; i++) {
+            if (!Character.isDigit(isbn.charAt(i))) {
+                return false;
+            }
+        }
 
-    @Override
-    public String getDetails() {
-        return "";
+        return true;
     }
 
     @Override

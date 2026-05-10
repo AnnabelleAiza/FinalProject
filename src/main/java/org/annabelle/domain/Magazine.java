@@ -22,11 +22,6 @@ public class Magazine extends Item {
     }
 
     @Override
-    public String getDetails() {
-        return "";
-    }
-
-    @Override
     public String toCSV() {
         return "";
     }

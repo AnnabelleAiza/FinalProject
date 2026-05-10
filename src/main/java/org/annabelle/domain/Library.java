@@ -39,8 +39,12 @@ public class Library {
      * @param user the user that is borrowing the item
      */
     public void borrowItem(Item item, User user) {
-        item.setStatus(Item.ItemStatus.BORROWED);
-        user.borrowItem(item);
+        if (item.getStatus() == Item.ItemStatus.IN_STORE && user.canBorrow(item)) {
+            item.setStatus(Item.ItemStatus.BORROWED);
+            user.borrowItem(item);
+        } else {
+            System.out.println("cannot borrow");
+        }
     }
 
     /**
@@ -49,8 +53,12 @@ public class Library {
      * @param user the user that is returning the item
      */
     public void returnItem(Item item, User user) {
-        item.setStatus(Item.ItemStatus.IN_STORE);
-        user.returnItem(item);
+        if (item.getStatus() == Item.ItemStatus.BORROWED || item.getStatus() == Item.ItemStatus.LOST) {
+            item.setStatus(Item.ItemStatus.IN_STORE);
+            user.returnItem(item);
+        } else {
+            System.out.println("cannot return");
+        }
     }
 
     /**
@@ -122,10 +130,13 @@ public class Library {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Reads the users from the CSV file
+     */
     private void loadUsersFromCSV() {
         File file = new File(Constants.USER_CSV_PATH);
         try (Scanner scanner = new Scanner(file)){
-            while(scanner.hasNext()) {
+            while(scanner.hasNextLine()) {
                 String str = scanner.nextLine();
                 String[] parts = str.split(",");
 
@@ -150,10 +161,13 @@ public class Library {
         }
     }
 
+    /**
+     * Reads the items from the CSV file
+     */
     private void loadItemsFromCSV() {
         File file = new File(Constants.ITEM_CSV_PATH);
         try (Scanner scanner = new Scanner(file)) {
-            while (scanner.hasNext()) {
+            while (scanner.hasNextLine()) {
                 String str = scanner.nextLine();
                 String[] parts = str.split(",");
                 String type = parts[0];

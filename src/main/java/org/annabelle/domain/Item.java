@@ -20,8 +20,6 @@ public abstract class Item {
         this.status = ItemStatus.IN_STORE;
     }
 
-    public abstract String getDetails();
-
     public abstract String toCSV();
 
     public enum ItemStatus{

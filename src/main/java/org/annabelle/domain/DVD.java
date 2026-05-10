@@ -23,6 +23,10 @@ public class DVD extends Item {
 
     @Override
     public String toCSV() {
-        return "";
+        return "DVD" +
+                id + "," +
+                title + "," +
+                director + "," +
+                durationMinutes;
     }
 }

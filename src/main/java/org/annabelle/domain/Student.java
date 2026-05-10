@@ -15,4 +15,11 @@ public class Student extends User {
             return true;
         }
     }
+
+    @Override
+    public String toCSV() {
+        return id + "," +
+                name + "," +
+                "STUDENT";
+    }
 }

@@ -23,6 +23,10 @@ public class Magazine extends Item {
 
     @Override
     public String toCSV() {
-        return "";
+        return "MAGAZINE" +
+                id + "," +
+                title + "," +
+                issueNumber + "," +
+                publisher;
     }
 }

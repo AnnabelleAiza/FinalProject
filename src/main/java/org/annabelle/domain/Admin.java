@@ -50,6 +50,13 @@ public class Admin extends User implements Reportable {
     }
 
     @Override
+    public String toCSV() {
+        return id + "," +
+                name + "," +
+                "ADMIN";
+    }
+
+    @Override
     public boolean canBorrow(Item item) {
         return false;
     }

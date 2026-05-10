@@ -2,16 +2,19 @@ package org.annabelle.domain;
 
 import lombok.Getter;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 @Getter
 public class Library {
-    public Map<String, Item> items;
-    public Map<String, User> users;
+    private Map<String, Item> items = new HashMap<>();
+    private Map<String, User> users = new HashMap<>();
 
     public Library() {
-        this.items = new HashMap<>();
-        this.users = new HashMap<>();
+
     }
 
     /**
@@ -117,5 +120,59 @@ public class Library {
                 .filter(i -> i.getTitle().toLowerCase().contains(title.toLowerCase()))
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    private void loadUsersFromCSV() {
+        File file = new File(Constants.USER_CSV_PATH);
+        try (Scanner scanner = new Scanner(file)){
+            while(scanner.hasNext()) {
+                String str = scanner.nextLine();
+                String[] parts = str.split(",");
+
+                String id = parts[0];
+                String name = parts[1];
+                String type = parts[2];
+
+                User user;
+
+                if(type.equals("STUDENT")) {
+                    user = new Student(id, name);
+                } else if (type.equals("TEACHER")) {
+                    user = new Teacher(id, name);
+                } else {
+                    user = new Admin(id, name);
+                }
+
+                addUser(user);
+            }
+        } catch (IOException e) {
+            System.out.println("reading error");
+        }
+    }
+
+    private void loadItemsFromCSV() {
+        File file = new File(Constants.ITEM_CSV_PATH);
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNext()) {
+                String str = scanner.nextLine();
+                String[] parts = str.split(",");
+                String type = parts[0];
+
+                Item item = null;
+                switch (type) {
+                    case "BOOK" ->item = new Book(parts[1],parts[2],parts[3],parts[4],parts[5]);
+                    case "DVD" -> item = new DVD(parts[1],parts[2],parts[3],Integer.parseInt(parts[4]));
+                    case "MAGAZINE" -> item = new Magazine(parts[1],parts[2],parts[3],parts[4]);
+                    default -> {
+                        System.out.println("unknown");
+                        continue;
+                    }
+                }
+
+                addItem(item);
+            }
+        } catch (IOException e) {
+            System.out.println("reading error");
+        }
     }
 }

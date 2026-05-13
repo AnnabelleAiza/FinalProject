@@ -1,15 +1,19 @@
 package org.annabelle.domain;
 
+import lombok.Getter;
+
+import java.util.List;
+@Getter
 public class Student extends User {
-    public Student(String name) {
-        super(name);
+    public Student(String id, String name) {
+        super(id, name);
     }
 
     @Override
     public boolean canBorrow(Item item) {
-        if (!(borrowedItems instanceof Book)) {
+        if (!(item instanceof Book)) {
             return false;
-        } else if (borrowedItems.size() >= 5) {
+        } else if(borrowedItems.size() >= 5) {
             return false;
         } else {
             return true;
@@ -18,8 +22,8 @@ public class Student extends User {
 
     @Override
     public String toCSV() {
-        return id + "," +
-                name + "," +
-                "STUDENT";
+        return "STUDENT," +
+                id + "," +
+                name;
     }
 }

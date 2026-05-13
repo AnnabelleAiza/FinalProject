@@ -1,8 +1,12 @@
 package org.annabelle.domain;
 
+import lombok.Getter;
+
+import java.util.List;
+@Getter
 public class Teacher extends User {
-    public Teacher(String name) {
-        super(name);
+    public Teacher(String id, String name) {
+        super(id, name);
     }
 
     @Override
@@ -16,8 +20,8 @@ public class Teacher extends User {
 
     @Override
     public String toCSV() {
-        return id + "," +
-                name + "," +
-                "TEACHER";
+        return "TEACHER," +
+                id + "," +
+                name;
     }
 }

@@ -18,7 +18,7 @@ public class DVD extends Item {
         this.durationMinutes = durationMinutes;
     }
 
-    public DVD(String id, String title, String director, int durationMinutes, ItemStatus status) {
+    public DVD(String id, String title, ItemStatus status, String director, int durationMinutes) {
         super(id, title, status);
         this.director = director;
         this.durationMinutes = durationMinutes;
@@ -26,9 +26,10 @@ public class DVD extends Item {
 
     @Override
     public String toCSV() {
-        return "DVD" +
+        return "DVD," +
                 id + "," +
                 title + "," +
+                status + "," +
                 director + "," +
                 durationMinutes;
     }

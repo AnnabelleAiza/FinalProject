@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-@AllArgsConstructor
 public abstract class Item {
     protected String id;
     protected String title;
@@ -17,6 +16,12 @@ public abstract class Item {
     public Item(String title) {
         this.title = title;
         this.status = ItemStatus.IN_STORE;
+    }
+
+    public Item(String id, String title, ItemStatus status) {
+        this.id = id;
+        this.title = title;
+        this.status = status;
     }
 
     public abstract String toCSV();

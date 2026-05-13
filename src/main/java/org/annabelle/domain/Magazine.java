@@ -18,7 +18,7 @@ public class Magazine extends Item {
         this.publisher = publisher;
     }
 
-    public Magazine(String id, String title, String issueNumber, String publisher, ItemStatus status) {
+    public Magazine(String id, String title, ItemStatus status, String issueNumber, String publisher) {
         super(id, title, status);
         this.issueNumber = issueNumber;
         this.publisher = publisher;
@@ -26,9 +26,10 @@ public class Magazine extends Item {
 
     @Override
     public String toCSV() {
-        return "MAGAZINE" +
+        return "MAGAZINE," +
                 id + "," +
                 title + "," +
+                status + "," +
                 issueNumber + "," +
                 publisher;
     }

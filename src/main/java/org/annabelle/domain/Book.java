@@ -1,8 +1,10 @@
 package org.annabelle.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Book extends Item {
     private String isbn;
     private String author;
@@ -18,7 +20,7 @@ public class Book extends Item {
         this.genre = genre;
     }
 
-    public Book(String id, String title, String isbn, String author, String genre, ItemStatus status){
+    public Book(String id, String title, ItemStatus status, String isbn, String author, String genre) {
         super(id, title, status);
         this.isbn = isbn;
         this.author = author;
@@ -30,6 +32,8 @@ public class Book extends Item {
         return "BOOK," +
                 id + "," +
                 title + "," +
+                status + "," +
+                isbn + "," +
                 author + "," +
                 genre;
     }

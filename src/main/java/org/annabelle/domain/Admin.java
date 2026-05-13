@@ -1,5 +1,6 @@
 package org.annabelle.domain;
 
+import lombok.Getter;
 import org.annabelle.utils.Constants;
 
 import java.io.File;
@@ -9,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
+@Getter
 public class Admin extends User implements Reportable {
-    public Admin(String name) {
-        super(name);
+    public Admin(String id, String name) {
+        super(id, name);
     }
 
     public void backupUsers(Library library) {
@@ -58,8 +59,8 @@ public class Admin extends User implements Reportable {
 
     @Override
     public String toCSV() {
-        return id + "," +
-                name + "," +
-                "ADMIN";
+        return "ADMIN," +
+                id + "," +
+                name;
     }
 }

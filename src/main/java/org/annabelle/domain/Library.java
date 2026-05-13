@@ -147,18 +147,18 @@ public class Library {
                 String str = scanner.nextLine();
                 String[] parts = str.split(",");
 
-                String id = parts[0];
-                String name = parts[1];
-                String type = parts[2];
+                String type = parts[0];
+                String id = parts[1];
+                String name = parts[2];
 
                 User user;
 
                 if(type.equals("STUDENT")) {
-                    user = new Student(name);
+                    user = new Student(id, name);
                 } else if (type.equals("TEACHER")) {
-                    user = new Teacher(name);
+                    user = new Teacher(id, name);
                 } else {
-                    user = new Admin(name);
+                    user = new Admin(id, name);
                 }
 
                 addUser(user);
@@ -181,9 +181,12 @@ public class Library {
 
                 Item item = null;
                 switch (type) {
-                    case "BOOK" ->item = new Book(parts[1], parts[2], parts[3], parts[4]);
-                    case "DVD" -> item = new DVD(parts[1],parts[2],Integer.parseInt(parts[3]));
-                    case "MAGAZINE" -> item = new Magazine(parts[1],parts[2],parts[3]);
+                    case "BOOK" ->item = new Book(
+                            parts[1], parts[2], Item.ItemStatus.valueOf(parts[3]), parts[4], parts[5], parts[6]);
+                    case "DVD" -> item = new DVD(
+                            parts[1],parts[2],Item.ItemStatus.valueOf(parts[3]), parts[4], Integer.parseInt(parts[5]));
+                    case "MAGAZINE" -> item = new Magazine(
+                            parts[1],parts[2],Item.ItemStatus.valueOf(parts[3]), parts[4], parts[5]);
                     default -> {
                         System.out.println("unknown");
                         continue;

@@ -23,6 +23,12 @@ public abstract class User {
         this.borrowedItems = new ArrayList<>();
     }
 
+    public User(String id, String name) {
+        this.id = id;
+        this.name = name;
+        this.borrowedItems = new ArrayList<>();
+    }
+
     /**
      * borrows items
      * @param item the item the user wishes to borrow

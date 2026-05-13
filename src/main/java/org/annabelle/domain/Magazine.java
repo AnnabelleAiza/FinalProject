@@ -9,8 +9,11 @@ public class Magazine extends Item {
     private String issueNumber;
     private String publisher;
 
-    public Magazine(String id, String title, String issueNumber, String publisher) {
-        super(id, title);
+    private static int nextId = 1;
+
+    public Magazine(String title, String issueNumber, String publisher) {
+        super(title);
+        this.id = "3" + String.format("%03d", nextId++);
         this.issueNumber = issueNumber;
         this.publisher = publisher;
     }

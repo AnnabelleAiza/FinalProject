@@ -1,10 +1,9 @@
 package org.annabelle.domain;
 
 import lombok.Getter;
+import org.annabelle.utils.Constants;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -22,6 +21,10 @@ public class Library {
      * @param user all the created users
      */
     public void addUser(User user){
+        if (users.containsKey(user.getId())) {
+            throw new IllegalArgumentException("Duplicate User Id");
+        }
+
         users.putIfAbsent(user.getId(), user);
     }
 
@@ -30,6 +33,10 @@ public class Library {
      * @param item all the created items
      */
     public void addItem(Item item){
+        if (items.containsKey(item.getId())) {
+            throw new IllegalArgumentException("Duplicate Item Id");
+        }
+
         items.putIfAbsent(item.getId(), item);
     }
 
@@ -104,7 +111,7 @@ public class Library {
      * @param index the index in the itemList
      * @return the current items in the itemList
      */
-    public Item searchRecursive(List<Item> itemList, String title, int index){
+    public List<Item> searchRecursive(List<Item> itemList, String title, int index){
         if(index >= itemList.size()) {
             return null;
         }
@@ -147,11 +154,11 @@ public class Library {
                 User user;
 
                 if(type.equals("STUDENT")) {
-                    user = new Student(id, name);
+                    user = new Student(name);
                 } else if (type.equals("TEACHER")) {
-                    user = new Teacher(id, name);
+                    user = new Teacher(name);
                 } else {
-                    user = new Admin(id, name);
+                    user = new Admin(name);
                 }
 
                 addUser(user);
@@ -174,9 +181,9 @@ public class Library {
 
                 Item item = null;
                 switch (type) {
-                    case "BOOK" ->item = new Book(parts[1],parts[2],parts[3],parts[4],parts[5]);
-                    case "DVD" -> item = new DVD(parts[1],parts[2],parts[3],Integer.parseInt(parts[4]));
-                    case "MAGAZINE" -> item = new Magazine(parts[1],parts[2],parts[3],parts[4]);
+                    case "BOOK" ->item = new Book(parts[1], parts[2], parts[3], parts[4]);
+                    case "DVD" -> item = new DVD(parts[1],parts[2],Integer.parseInt(parts[3]));
+                    case "MAGAZINE" -> item = new Magazine(parts[1],parts[2],parts[3]);
                     default -> {
                         System.out.println("unknown");
                         continue;

@@ -8,8 +8,11 @@ public class Book extends Item {
     private String author;
     private String genre;
 
-    public Book(String id, String title, String isbn, String author, String genre) {
-        super(id, title);
+    private static int nextId = 1;
+
+    public Book(String title, String isbn, String author, String genre) {
+        super(title);
+        this.id = "1" + String.format("%03d", nextId++);
         this.isbn = isbn;
         this.author = author;
         this.genre = genre;
@@ -20,20 +23,6 @@ public class Book extends Item {
         this.isbn = isbn;
         this.author = author;
         this.genre = genre;
-    }
-
-    public boolean validateISBN(){
-        if (isbn == null || isbn.length() != 13) {
-            return false;
-        }
-
-        for(int i = 0; i < 13; i++) {
-            if (!Character.isDigit(isbn.charAt(i))) {
-                return false;
-            }
-        }
-
-        return true;
     }
 
     @Override

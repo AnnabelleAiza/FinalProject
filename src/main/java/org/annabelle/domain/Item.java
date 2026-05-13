@@ -14,8 +14,7 @@ public abstract class Item {
     protected String title;
     protected ItemStatus status;
 
-    public Item(String id, String title) {
-        this.id = id;
+    public Item(String title) {
         this.title = title;
         this.status = ItemStatus.IN_STORE;
     }

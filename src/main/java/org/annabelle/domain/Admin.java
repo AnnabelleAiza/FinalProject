@@ -1,5 +1,7 @@
 package org.annabelle.domain;
 
+import org.annabelle.utils.Constants;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,8 +11,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Admin extends User implements Reportable {
-    public Admin(String id, String name) {
-        super(id, name);
+    public Admin(String name) {
+        super(name);
     }
 
     public void backupUsers(Library library) {
@@ -50,14 +52,14 @@ public class Admin extends User implements Reportable {
     }
 
     @Override
+    public boolean canBorrow(Item item) {
+        return false;
+    }
+
+    @Override
     public String toCSV() {
         return id + "," +
                 name + "," +
                 "ADMIN";
-    }
-
-    @Override
-    public boolean canBorrow(Item item) {
-        return false;
     }
 }

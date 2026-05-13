@@ -1,8 +1,8 @@
 package org.annabelle.domain;
 
 public class Teacher extends User {
-    public Teacher(String id, String name) {
-        super(id, name);
+    public Teacher(String name) {
+        super(name);
     }
 
     @Override

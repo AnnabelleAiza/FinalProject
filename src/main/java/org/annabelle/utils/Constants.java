@@ -1,4 +1,4 @@
-package org.annabelle.domain;
+package org.annabelle.utils;
 
 public class Constants {
     public static final String ITEM_CSV_PATH = "src/main/resources/item.csv";

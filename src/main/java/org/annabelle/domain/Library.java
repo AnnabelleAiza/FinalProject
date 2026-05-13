@@ -197,4 +197,23 @@ public class Library {
             System.out.println("reading error");
         }
     }
+
+    //sorting strategies
+    public List<Item> sortItemsByTitle() {
+        return items.values().stream()
+                .sorted(Comparator.comparing(Item :: getTitle))
+                .toList();
+    }
+
+    public List<Item> sortItemsByStatus() {
+        return items.values().stream()
+                .sorted(Comparator.comparing(Item :: getStatus))
+                .toList();
+    }
+
+    public List<User> sortUsersByName() {
+        return users.values().stream()
+                .sorted(Comparator.comparing(User :: getName))
+                .toList();
+    }
 }

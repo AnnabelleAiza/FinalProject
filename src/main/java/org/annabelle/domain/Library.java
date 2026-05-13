@@ -13,7 +13,6 @@ public class Library {
     private Map<String, User> users = new HashMap<>();
 
     public Library() {
-
     }
 
     /**

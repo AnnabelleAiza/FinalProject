@@ -1,18 +1,19 @@
 package org.annabelle.domain;
-
 import lombok.Getter;
 import org.annabelle.utils.Constants;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
+
 @Getter
 public class Library {
     private Map<String, Item> items = new HashMap<>();
     private Map<String, User> users = new HashMap<>();
 
     public Library() {
+        loadUsersFromCSV();
+        loadItemsFromCSV();
     }
 
     /**
@@ -36,7 +37,7 @@ public class Library {
             throw new IllegalArgumentException("Duplicate Item Id");
         }
 
-        items.putIfAbsent(item.getId(), item);
+        items.put(item.getId(), item);
     }
 
     /**
@@ -113,7 +114,7 @@ public class Library {
      */
     public List<Item> searchRecursive(List<Item> itemList, List<Item> results, String title, int index){
         if(index >= itemList.size()) {
-            return null;
+            return results;
         }
 
         Item current = itemList.get(index);
@@ -157,8 +158,10 @@ public class Library {
                     user = new Student(id, name);
                 } else if (type.equals("TEACHER")) {
                     user = new Teacher(id, name);
-                } else {
+                } else if (type.equals("ADMIN")){
                     user = new Admin(id, name);
+                } else {
+                    throw new IllegalArgumentException("unknown user");
                 }
 
                 addUser(user);

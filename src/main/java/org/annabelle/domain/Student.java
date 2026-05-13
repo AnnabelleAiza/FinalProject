@@ -1,8 +1,6 @@
 package org.annabelle.domain;
-
 import lombok.Getter;
 
-import java.util.List;
 @Getter
 public class Student extends User {
     public Student(String id, String name) {

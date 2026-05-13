@@ -1,8 +1,6 @@
 package org.annabelle.domain;
-
 import lombok.Getter;
 import org.annabelle.utils.Constants;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+
 @Getter
 public class Admin extends User implements Reportable {
     public Admin(String id, String name) {

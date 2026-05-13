@@ -1,19 +1,16 @@
 package org.annabelle.domain;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 @EqualsAndHashCode
 public abstract class User {
     protected String id;
-    protected String name;
-    protected List<Item> borrowedItems;
+    @Setter protected String name;
+    @Setter protected List<Item> borrowedItems;
 
     public static int nextId = 1;
 

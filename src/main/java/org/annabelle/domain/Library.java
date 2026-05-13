@@ -105,13 +105,14 @@ public class Library {
     }
 
     /**
-     * Searches for items based on title using recursion
-     * @param itemList list of items
-     * @param title the input title
-     * @param index the index in the itemList
-     * @return the current items in the itemList
+     * Searches for the title using recursion
+     * @param itemList the list of all items
+     * @param results the list of titles contains the searched title
+     * @param title the searched title
+     * @param index index in the itemList
+     * @return a list of the results
      */
-    public List<Item> searchRecursive(List<Item> itemList, String title, int index){
+    public List<Item> searchRecursive(List<Item> itemList, List<Item> results, String title, int index){
         if(index >= itemList.size()) {
             return null;
         }
@@ -119,10 +120,10 @@ public class Library {
         Item current = itemList.get(index);
 
         if (current.getTitle().toLowerCase().contains(title.toLowerCase())) {
-            return current;
+            results.add(current);
         }
 
-        return searchRecursive(itemList, title, index + 1);
+        return searchRecursive(itemList, results, title, index + 1);
     }
 
     /**

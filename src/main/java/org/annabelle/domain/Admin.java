@@ -15,6 +15,10 @@ public class Admin extends User implements Reportable {
         super(id, name);
     }
 
+    /**
+     * writes users to csv file
+     * @param library the library class
+     */
     public void backupUsers(Library library) {
         File file = new File(Constants.USER_CSV_PATH);
         try (FileWriter fw = new FileWriter(file)) {
@@ -27,6 +31,10 @@ public class Admin extends User implements Reportable {
         }
     }
 
+    /**
+     * writes items to csv file
+     * @param library the library class
+     */
     public void backupItems(Library library) {
         File file = new File(Constants.ITEM_CSV_PATH);
         try (FileWriter fw = new FileWriter(file)) {

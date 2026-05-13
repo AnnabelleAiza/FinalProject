@@ -14,18 +14,4 @@ public class Validation {
 
         return true;
     }
-
-    public static boolean validateName(String name) {
-        if (name == null) {
-            return false;
-        }
-
-        for(int i = 0; i < name.length(); i++) {
-            if (!Character.isLetter(name.charAt(i))) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 }

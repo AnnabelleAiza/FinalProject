@@ -48,7 +48,7 @@ public class Library {
     public void borrowItem(Item item, User user) {
         if (item.getStatus() == Item.ItemStatus.IN_STORE && user.canBorrow(item)) {
             item.setStatus(Item.ItemStatus.BORROWED);
-            user.borrowItem(item);
+            user.addBorrowedItem(item);
         } else {
             System.out.println("cannot borrow");
         }
@@ -62,7 +62,7 @@ public class Library {
     public void returnItem(Item item, User user) {
         if (item.getStatus() == Item.ItemStatus.BORROWED || item.getStatus() == Item.ItemStatus.LOST) {
             item.setStatus(Item.ItemStatus.IN_STORE);
-            user.returnItem(item);
+            user.removeReturnedItem(item);
         } else {
             System.out.println("cannot return");
         }

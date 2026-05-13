@@ -27,20 +27,20 @@ public abstract class User {
     }
 
     /**
-     * borrows items
+     * adds borrowed items to borrowedItems list
      * @param item the item the user wishes to borrow
      */
-    public void borrowItem(Item item) {
+    public void addBorrowedItem(Item item) {
         if (!borrowedItems.contains(item)) {
             borrowedItems.add(item);
         }
     }
 
     /**
-     * returns items
+     * removes returned items to borrowedItems list
      * @param item the item the user wishes to return
      */
-    public void returnItem(Item item) {
+    public void removeReturnedItem(Item item) {
         if (borrowedItems.contains(item)) {
             borrowedItems.remove(item);
         }

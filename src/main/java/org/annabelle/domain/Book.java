@@ -1,6 +1,7 @@
 package org.annabelle.domain;
 import lombok.Getter;
 import lombok.Setter;
+import org.annabelle.utils.Validation;
 
 @Getter
 @Setter
@@ -14,6 +15,9 @@ public class Book extends Item {
     public Book(String title, String isbn, String author, String genre) {
         super(title);
         this.id = "1" + String.format("%03d", nextId++);
+        if (!Validation.validateISBN(isbn)) {
+            throw new IllegalArgumentException("invalid isbn");
+        }
         this.isbn = isbn;
         this.author = author;
         this.genre = genre;

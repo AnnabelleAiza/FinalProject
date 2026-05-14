@@ -204,18 +204,28 @@ public class Library {
     }
 
     //sorting strategies
-    public List<Item> sortItemsByTitle() {
-        return items.values().stream()
-                .sorted(Comparator.comparing(Item :: getTitle))
-                .toList();
+
+    /**
+     * bubble sorting by title
+     * @param items the items
+     */
+    public void sortItemsByTitle(List<Item> items) {
+        for(int i = 0; i < items.size() - 1; i++){
+            for(int j = 0; j < items.size() - 1 - i; j++) {
+                if(items.get(j).getTitle().
+                        compareToIgnoreCase(items.get(j + 1).getTitle()) > 0){
+                    Item temp = items.get(j);
+                    items.set(j, items.get(j +1));
+                    items.set(j+1, temp);
+                }
+            }
+        }
     }
 
-    public List<Item> sortItemsByStatus() {
-        return items.values().stream()
-                .sorted(Comparator.comparing(Item :: getStatus))
-                .toList();
-    }
-
+    /**
+     * sorting users using lambda expression  by their name
+     * @return a list of users sorted alphabetically by their name
+     */
     public List<User> sortUsersByName() {
         return users.values().stream()
                 .sorted(Comparator.comparing(User :: getName))

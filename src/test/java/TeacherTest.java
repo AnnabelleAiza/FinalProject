@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class TeacherTest {
-    User teacher = new Teacher("0001", "Yi");
+    User teacher = new Teacher("Yi");
     Item book = new Book("Book1", "1234567890123", "author1", "fantasy");
     Item dvd = new DVD("dvd1", "director1", 123);
 

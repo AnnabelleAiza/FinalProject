@@ -3,10 +3,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class StudentTest {
-    Student student = new Student("0001", "Alice");
+    Student student = new Student("Alice");
     Item book = new Book("Book1", "1234567890123", "author1", "fantasy");
     Item dvd = new DVD("dvd1", "director1", 123);
-    Item magazine = new Magazine("magazine1", "13", "publisher1");
 
     @Test
     void testCanBorrow1() {

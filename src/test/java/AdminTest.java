@@ -4,10 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class AdminTest {
-    User admin = new Admin("0002", "admin");
+    User admin = new Admin("admin");
     Item book = new Book("Book1", "1234567890123", "author1", "fantasy");
-    Item dvd = new DVD("dvd1", "director1", 123);
-    Item magazine = new Magazine("magazine1", "13", "publisher1");
 
     @Test
     @DisplayName("testing canBorrow")

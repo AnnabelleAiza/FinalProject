@@ -149,17 +149,16 @@ public class Library {
                 String[] parts = str.split(",");
 
                 String type = parts[0];
-                String id = parts[1];
-                String name = parts[2];
+                String name = parts[1];
 
                 User user;
 
                 if(type.equals("STUDENT")) {
-                    user = new Student(id, name);
+                    user = new Student(name);
                 } else if (type.equals("TEACHER")) {
-                    user = new Teacher(id, name);
+                    user = new Teacher(name);
                 } else if (type.equals("ADMIN")){
-                    user = new Admin(id, name);
+                    user = new Admin(name);
                 } else {
                     throw new IllegalArgumentException("unknown user");
                 }

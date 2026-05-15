@@ -11,8 +11,8 @@ import java.util.TreeMap;
 
 @Getter
 public class Admin extends User implements Reportable {
-    public Admin(String id, String name) {
-        super(id, name);
+    public Admin(String name) {
+        super(name);
     }
 
     /**

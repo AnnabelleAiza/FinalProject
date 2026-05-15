@@ -8,8 +8,7 @@ import java.util.List;
 
 public class LibraryTest {
     Library library = new Library();
-    User user1 = new Student("0001", "student1");
-    User user2 = new Student("0001", "bob");
+    User user1 = new Student("student1");
     Item item1 = new Book("Harry Potter", "1234123412341", "J.K. Rowling", "fantasy");
     Item item2 = new Book("Java prog", "1275673412341", "Jane", "educational");
     Item item3 = new Book("Harry Potter 1", "1234123413333", "J.K. Rowling", "fantasy");

@@ -32,4 +32,9 @@ public class DVD extends Item {
                 director + "," +
                 durationMinutes;
     }
+
+    @Override
+    public String toString() {
+        return id + "|" + title + "|" + status + "|" + director + "|" + durationMinutes;
+    }
 }

@@ -32,4 +32,9 @@ public class Magazine extends Item {
                 issueNumber + "," +
                 publisher;
     }
+
+    @Override
+    public String toString() {
+        return id + "|" + title + "|" + status + "|" + issueNumber + "|" + publisher;
+    }
 }

@@ -40,4 +40,10 @@ public class Book extends Item {
                 author + "," +
                 genre;
     }
+
+    @Override
+    public String toString() {
+        return  id + "|" + title + "|" +
+                status + "|" + isbn + "|" + author + "|" + genre;
+    }
 }

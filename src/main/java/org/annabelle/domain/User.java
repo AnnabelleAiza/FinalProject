@@ -43,4 +43,9 @@ public abstract class User {
     public abstract boolean canBorrow(Item item);
 
     public abstract String toCSV();
+
+    @Override
+    public String toString() {
+        return id + "|" + name;
+    }
 }

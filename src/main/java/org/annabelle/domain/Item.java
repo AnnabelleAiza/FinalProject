@@ -27,4 +27,9 @@ public abstract class Item {
     public enum ItemStatus{
         IN_STORE, BORROWED, LOST
     }
+
+    @Override
+    public String toString() {
+        return id + "|" + title + "|" + status;
+    }
 }
